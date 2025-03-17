@@ -20,6 +20,11 @@
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="br.com.bwg.livesteck.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/title_cad_granja"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/navigation_cad_granja"
+        android:name="br.com.bwg.livesteck.ui.granja.CadGranjaFragment"
+        android:label="fragment_cad_granja"
+        tools:layout="@layout/fragment_cad_granja" />
 </navigation>

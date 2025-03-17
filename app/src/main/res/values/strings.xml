@@ -1,6 +1,15 @@
 <resources>
     <string name="app_name">LivesTeck</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">Inicio</string>
+    <string name="title_dashboard">Painel</string>
+    <string name="title_notifications">Avisos</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_cad_granja">Cadastro</string>
+    <string name="title_log_granja">Login</string>
+    <string name="url_autenticador">URL autenticador</string>
+    <string name="granja">Granja</string>
+    <string name="nome_granja">Nome Granja</string>
+    <string name="hint_nome_granja">Strege</string>
+    <string name="senha">Senha</string>
 </resources>

@@ -12,6 +12,16 @@
         android:title="@string/title_dashboard" />
 
     <item
+        android:id="@+id/navigation_cad_granja"
+        android:icon="@android:drawable/ic_lock_lock"
+        android:title="@string/title_cad_granja" />
+
+    <item
+        android:id="@+id/navigation_log_granja"
+        android:icon="@android:drawable/ic_lock_lock"
+        android:title="@string/title_log_granja" />
+
+    <item
         android:id="@+id/navigation_notifications"
         android:icon="@drawable/ic_notifications_black_24dp"
         android:title="@string/title_notifications" />
