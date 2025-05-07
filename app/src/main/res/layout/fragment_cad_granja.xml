@@ -8,41 +8,73 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
-
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/textViewNm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/nome_granja" />
-
+                android:text="Nome" />
             <EditText
-                android:id="@+id/etNomeGranja"
+                android:id="@+id/etNome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/hint_nome_granja"
-                android:importantForAutofill="no"
-                android:inputType="text"
-                android:minHeight="48dp" />
-
+                android:inputType="textPersonName" />
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/textViewLat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/senha" />
-
+                android:text="@string/latitude" />
             <EditText
-                android:id="@+id/etSenha"
+                android:id="@+id/etLat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:importantForAutofill="no"
-                android:inputType="textPassword" />
+                android:inputType="text" />
+            <TextView
+                android:id="@+id/textViewLong"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/longitude" />
+            <EditText
+                android:id="@+id/etLong"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text" />
+            <TextView
+                android:id="@+id/textViewProprietario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/proprietario" />
+            <EditText
+                android:id="@+id/etProprietario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+            <TextView
+                android:id="@+id/textViewSilos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/silos" />
+            <EditText
+                android:id="@+id/etSilos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number" />
+            <Button
+                android:id="@+id/btSalvar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Salvar" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize" />
         </LinearLayout>
     </ScrollView>
 

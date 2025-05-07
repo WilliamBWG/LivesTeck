@@ -12,4 +12,8 @@
     <string name="nome_granja">Nome Granja</string>
     <string name="hint_nome_granja">Strege</string>
     <string name="senha">Senha</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="proprietario">Proprietário</string>
+    <string name="silos">Quantidade de Silos</string>
 </resources>

@@ -22,6 +22,8 @@ public class CadGranjaFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    private View view;
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -61,6 +63,7 @@ public class CadGranjaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cad_granja, container, false);
+        this.view = inflater.inflate(R.layout.fragment_cad_granja, container, false);
+        return this.view;
     }
 }
