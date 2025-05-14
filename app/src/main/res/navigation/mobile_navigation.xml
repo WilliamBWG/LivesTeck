@@ -25,6 +25,11 @@
     <fragment
         android:id="@+id/navigation_cad_granja"
         android:name="br.com.bwg.livesteck.ui.granja.CadGranjaFragment"
-        android:label="fragment_cad_granja"
+        android:label="@string/title_cad_granja"
         tools:layout="@layout/fragment_cad_granja" />
+    <fragment
+        android:id="@+id/navigation_con_granja"
+        android:name="br.com.bwg.livesteck.ui.granja.ConGranjaFragment"
+        android:label="@string/title_con_granja"
+        tools:layout="@layout/fragment_con_granja_list" />
 </navigation>
