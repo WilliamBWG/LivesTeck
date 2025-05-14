@@ -31,9 +31,8 @@ import br.com.bwg.livesteck.model.Granja;
  * Use the {@link CadGranjaFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CadGranjaFragment extends Fragment implements Response.ErrorListener, Response.Listener, View.OnClickListener{
+public class CadGranjaFragment extends Fragment implements Response.ErrorListener, Response.Listener<JSONObject>, View.OnClickListener{
 
-    // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -42,15 +41,9 @@ public class CadGranjaFragment extends Fragment implements Response.ErrorListene
     private EditText etLong;
     private EditText etProprietario;
     private EditText etSilos;
-    private Button btSalvar;
     private View view;
     //volley
     private RequestQueue requestQueue;
-    private JsonObjectRequest jsonObjectReq;
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public CadGranjaFragment() {
         // Required empty public constructor
@@ -64,7 +57,6 @@ public class CadGranjaFragment extends Fragment implements Response.ErrorListene
      * @param param2 Parameter 2.
      * @return A new instance of fragment CadGranjaFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static CadGranjaFragment newInstance(String param1, String param2) {
         CadGranjaFragment fragment = new CadGranjaFragment();
         Bundle args = new Bundle();
@@ -78,8 +70,9 @@ public class CadGranjaFragment extends Fragment implements Response.ErrorListene
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+
+            String mParam1 = getArguments().getString(ARG_PARAM1);
+            String mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -90,14 +83,14 @@ public class CadGranjaFragment extends Fragment implements Response.ErrorListene
         this.view = inflater.inflate(R.layout.fragment_cad_granja, container, false);
         //
         //Binding dos Objetos com os componentes XML
-        this.etNome = (EditText) view.findViewById(R.id.etNome);
-        this.etLat = (EditText) view.findViewById(R.id.etLat);
-        this.etLong = (EditText) view.findViewById(R.id.etLong);
-        this.etProprietario = (EditText) view.findViewById(R.id.etProprietario);
-        this.etSilos = (EditText) view.findViewById(R.id.etSilos);
-        this.btSalvar = (Button) view.findViewById(R.id.btSalvar);
+        this.etNome = view.findViewById(R.id.etNome);
+        this.etLat = view.findViewById(R.id.etLat);
+        this.etLong = view.findViewById(R.id.etLong);
+        this.etProprietario = view.findViewById(R.id.etProprietario);
+        this.etSilos = view.findViewById(R.id.etSilos);
+        Button btSalvar = view.findViewById(R.id.btSalvar);
         //definindo o listener do botão
-        this.btSalvar.setOnClickListener(this);
+        btSalvar.setOnClickListener(this);
         //instanciando a fila de req
         this.requestQueue = Volley.newRequestQueue(view.getContext());
         //inicializando a fila
@@ -119,7 +112,7 @@ public class CadGranjaFragment extends Fragment implements Response.ErrorListene
             g.setProprietario(this.etProprietario.getText().toString());
             g.setSilos(Integer.parseInt(this.etSilos.getText().toString()));
             //
-            jsonObjectReq = new JsonObjectRequest(
+            JsonObjectRequest jsonObjectReq = new JsonObjectRequest(
                     Request.Method.POST,
                     "http://10.0.2.2:8080/seg/cadusuario.php",
                     g.toJsonObject(), this, this);
@@ -143,10 +136,8 @@ public class CadGranjaFragment extends Fragment implements Response.ErrorListene
     }
 
     @Override
-    public void onResponse(Object response) {
+    public void onResponse(JSONObject jason) {
         try {
-//instanciando objeto para manejar o JSON que recebemos
-            JSONObject jason = new JSONObject(response.toString());
 //context e text são para a mensagem na tela o Toast
             Context context = view.getContext();
 //pegando mensagem que veio do json

@@ -34,19 +34,12 @@ import br.com.bwg.livesteck.model.Granja;
 /**
  * A fragment representing a list of Items.
  */
-public class ConGranjaFragment extends Fragment implements Response.ErrorListener, Response.Listener{
+public class ConGranjaFragment extends Fragment implements Response.ErrorListener, Response.Listener<JSONArray>{
 
-    // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
-    // TODO: Customize parameters
     private int mColumnCount = 1;
 
-    //atributo com lista de usuarios
-    private ArrayList<Granja> granjas;
-    //volley
-    private RequestQueue requestQueue;
-    private JsonArrayRequest jsonArrayReq;
-    //passar a view como atributo da classe e não do método
+    //passar a view como atributo da classe e não do metodo
     private View view;
 
     /**
@@ -56,7 +49,6 @@ public class ConGranjaFragment extends Fragment implements Response.ErrorListene
     public ConGranjaFragment() {
     }
 
-    // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
     public static ConGranjaFragment newInstance(int columnCount) {
         ConGranjaFragment fragment = new ConGranjaFragment();
@@ -80,9 +72,10 @@ public class ConGranjaFragment extends Fragment implements Response.ErrorListene
                              Bundle savedInstanceState) {
         this.view = inflater.inflate(R.layout.fragment_con_granja_list, container, false);
         //instanciando a fila de requests - caso o objeto seja o view
-        this.requestQueue = Volley.newRequestQueue(view.getContext());
+        //volley
+        RequestQueue requestQueue = Volley.newRequestQueue(view.getContext());
         //inicializando a fila de requests do SO
-        this.requestQueue.start();
+        requestQueue.start();
         //array parâmetro de envio para o serviço
         JSONArray jsonArray = new JSONArray();
         //objeto com informações de filtro da consulta
@@ -91,7 +84,7 @@ public class ConGranjaFragment extends Fragment implements Response.ErrorListene
         //incluindo objeto no array de envio
         jsonArray.put(granja.toJsonObject());
         //requisição para o Rest Server SEMPRE POST
-        jsonArrayReq = new JsonArrayRequest(Request.Method.POST,
+        JsonArrayRequest jsonArrayReq = new JsonArrayRequest(Request.Method.POST,
                 "http://10.0.2.2:8080/seg/conusuario.php",
                 jsonArray, this, this);
         //mando executar a requisção na fila do sistema
@@ -110,22 +103,20 @@ public class ConGranjaFragment extends Fragment implements Response.ErrorListene
     }
 
     @Override
-    public void onResponse(Object response) {
+    public void onResponse(JSONArray jsonArray) {
         try {
-            //array Json para receber a resposta do webservice
-            JSONArray jsonArray = null;
-            jsonArray = new JSONArray(response.toString());
+
             //se a consulta não veio vazia passar para array list
             if (jsonArray != null) {
-                //objeto java
-                Granja g = null;
+
                 //array list para receber a resposta
-                this.granjas = new ArrayList<Granja>();
+                //atributo com lista de usuarios
+                ArrayList<Granja> granjas = new ArrayList<>();
                 //preenchendo ArrayList com JSONArray recebido
                 for (int i = 0, size = jsonArray.length(); i < size; i++) {
                     JSONObject jo = jsonArray.getJSONObject(i);
-                    g = new Granja(jo);
-                    this.granjas.add(g);
+                    Granja g = new Granja(jo);
+                    granjas.add(g);
                 }
                 /*
                 O código abaixo já estava no metodo onCreateView().
@@ -147,7 +138,7 @@ public class ConGranjaFragment extends Fragment implements Response.ErrorListene
                                         mColumnCount));
                     }
                     recyclerView.setAdapter(
-                            new ConGranjaRecyclerViewAdapter(this.granjas));
+                            new ConGranjaRecyclerViewAdapter(granjas));
                 }
             }else {
                 Snackbar mensagem = Snackbar.make(view,

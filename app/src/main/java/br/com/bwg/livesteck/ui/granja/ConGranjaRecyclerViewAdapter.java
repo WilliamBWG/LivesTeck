@@ -1,5 +1,6 @@
 package br.com.bwg.livesteck.ui.granja;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -13,7 +14,6 @@ import java.util.List;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link Granja}.
- * TODO: Replace the implementation with code for your data type.
  */
 public class ConGranjaRecyclerViewAdapter extends RecyclerView.Adapter<ConGranjaRecyclerViewAdapter.ViewHolder> {
 
@@ -23,8 +23,9 @@ public class ConGranjaRecyclerViewAdapter extends RecyclerView.Adapter<ConGranja
         mValues = items;
     }
 
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         return new ViewHolder(FragmentConGranjaBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
 
@@ -53,6 +54,7 @@ public class ConGranjaRecyclerViewAdapter extends RecyclerView.Adapter<ConGranja
             mContentView = binding.content;
         }
 
+        @NonNull
         @Override
         public String toString() {
             return super.toString() + " '" + mContentView.getText() + "'";
