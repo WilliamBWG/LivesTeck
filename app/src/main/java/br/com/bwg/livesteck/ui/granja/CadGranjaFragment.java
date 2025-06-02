@@ -114,16 +114,11 @@ public class CadGranjaFragment extends Fragment implements Response.ErrorListene
             //
             JsonObjectRequest jsonObjectReq = new JsonObjectRequest(
                     Request.Method.POST,
-                    "http://10.0.2.2:8080/seg/cadusuario.php",
+                    "http://10.0.2.2/LivesTeck/cadGranha.php",
                     g.toJsonObject(), this, this);
             requestQueue.add(jsonObjectReq);
 
-            //mensagem de sucesso
-            Context context = view.getContext();
-            CharSequence text = "salvo com sucesso!";
-            int duration = Toast.LENGTH_SHORT;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
+
         }
     }
 

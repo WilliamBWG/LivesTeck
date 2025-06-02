@@ -28,12 +28,12 @@ public class Granja {
     //CONSTRUTOR - inicializa atributos de um arquivo JSon
     public Granja (JSONObject jp) {
         try {
-            this.setId(jp.getInt("id"));
-            this.setNome(jp.getString("nome"));
-            this.setNome(jp.getString("lat"));
-            this.setNome(jp.getString("long"));
-            this.setNome(jp.getString("proprietario"));
-            this.setId(jp.getInt("silos"));
+            this.setId(jp.getInt("idGranja"));
+            this.setNome(jp.getString("nomeGranja"));
+            this.setNome(jp.getString("Latitude"));
+            this.setNome(jp.getString("Longitude"));
+            this.setNome(jp.getString("nomeProprietario"));
+            this.setId(jp.getInt("Silos"));
         } catch (JSONException e) {
             Log.e("GRANJA", Objects.requireNonNull(e.getMessage()));
         }
@@ -42,12 +42,12 @@ public class Granja {
     public JSONObject toJsonObject() {
         JSONObject json = new JSONObject();
         try {
-            json.put("id", this.id);
-            json.put("nome", this.nome);
-            json.put("lat", this.latitude);
-            json.put("long", this.longitude);
-            json.put("proprietario", this.proprietario);
-            json.put("silos", this.silos);
+            json.put("idGranja", this.id);
+            json.put("nomeGranja", this.nome);
+            json.put("Latitude", this.latitude);
+            json.put("Longitude", this.longitude);
+            json.put("nomeProprietario", this.proprietario);
+            json.put("Silos", this.silos);
         } catch (JSONException e) {
             Log.e("GRANJA", Objects.requireNonNull(e.getMessage()));
         }
